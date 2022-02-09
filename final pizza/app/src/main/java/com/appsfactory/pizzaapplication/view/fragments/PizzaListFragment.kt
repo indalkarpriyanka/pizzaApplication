@@ -41,8 +41,8 @@ class PizzaListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(requireActivity())[DishListViewModel::class.java]
+        val dishListViewModel =
+            (requireActivity() as MainActivity).compositeRoot.dishListViewModel
 
         _binding = FragmentPizzaListBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -54,15 +54,14 @@ class PizzaListFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        dashboardViewModel.allPizzaList.observe(viewLifecycleOwner) {
-            if(it.isEmpty()){
-                binding.tvNoData.visibility=View.VISIBLE
-                binding.rcvDishList.visibility=View.GONE
+        dishListViewModel.allPizzaList.observe(viewLifecycleOwner) {
+            if (it.isEmpty()) {
+                binding.tvNoData.visibility = View.VISIBLE
+                binding.rcvDishList.visibility = View.GONE
 
-            }else
-            {
-                binding.tvNoData.visibility=View.GONE
-                binding.rcvDishList.visibility=View.VISIBLE
+            } else {
+                binding.tvNoData.visibility = View.GONE
+                binding.rcvDishList.visibility = View.VISIBLE
                 adapter.submitList(it)
             }
 

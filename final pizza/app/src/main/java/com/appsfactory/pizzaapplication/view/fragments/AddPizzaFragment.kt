@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.appsfactory.pizzaapplication.R
 import com.appsfactory.pizzaapplication.databinding.FragmentAddPizzaBinding
 import com.appsfactory.pizzaapplication.repository.remote.Pizza
+import com.appsfactory.pizzaapplication.view.activities.MainActivity
 import com.appsfactory.pizzaapplication.viewModels.AddDishViewModel
 import com.google.android.material.snackbar.Snackbar
 
@@ -22,7 +23,7 @@ class AddPizzaFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        addDishViewModel = ViewModelProvider(requireActivity())[AddDishViewModel::class.java]
+        addDishViewModel = (requireActivity() as MainActivity).compositeRoot.addDishViewModel
     }
 
     override fun onCreateView(
