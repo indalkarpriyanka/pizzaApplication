@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.appsfactory.pizzaapplication.view.fragments.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/navigation_pizza_list"
+        android:name="com.appsfactory.pizzaapplication.view.fragments.PizzaListFragment"
+        android:label="@string/title_pizza_list"
+        tools:layout="@layout/fragment_pizza_list">
+        <action
+            android:id="@+id/action_navigation_pizza_list_to_navigation_add_pizza"
+            app:destination="@id/navigation_add_pizza" />
+        <action
+            android:id="@+id/action_navigation_pizza_list_to_navigation_pizza_details"
+            app:destination="@id/navigation_pizza_details" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_add_pizza"
+        android:name="com.appsfactory.pizzaapplication.view.fragments.AddPizzaFragment"
+        android:label="@string/title_add_pizza"
+        tools:layout="@layout/fragment_add_pizza" />
+    <fragment
+        android:id="@+id/navigation_pizza_details"
+        android:name="com.appsfactory.pizzaapplication.view.fragments.PizzaDetailsFragment"
+        android:label="@string/title_pizza_details"
+        tools:layout="@layout/fragment_pizza_details" />
+
+</navigation>
